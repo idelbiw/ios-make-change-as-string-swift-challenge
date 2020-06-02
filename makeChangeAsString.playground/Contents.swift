@@ -1,7 +1,26 @@
 import UIKit
 
+func makeCahngeAsString(fromAmount: Double, withCost: Double) {
+    
+    let changeTotal = Double(round((fromAmount - withCost) * 100) / 100)
+    
+    let dollarAmount = Int(changeTotal)
+    let dollarsOnly = Double(dollarAmount)
+    let looseChange = Double(round((changeTotal - dollarsOnly) * 100) / 100)
+    let quarters = Int((looseChange / 0.25).rounded(.down))
+    let remainderAfterQuarters = looseChange.truncatingRemainder(dividingBy: 0.25)
+    let dimes = Int((remainderAfterQuarters / 0.10).rounded(.down))
+    let remainderAfterDimes = remainderAfterQuarters.truncatingRemainder(dividingBy: 0.10)
+    let nickels = Int((remainderAfterDimes / 0.05).rounded(.down))
+    let remainderAfterNickels = remainderAfterDimes.truncatingRemainder(dividingBy: 0.05)
+    let pennies = Int((remainderAfterNickels / 0.01).rounded(.down))
+    
+    
+    print("Your change is $\(changeTotal). That is \(dollarAmount.description) dollars, \(quarters.description) quarters, \(dimes.description) dimes, \(nickels) nickels, \(pennies) pennies")
+    
+}
 
-
+makeCahngeAsString(fromAmount: 10, withCost: 6.56)
 
 
 
